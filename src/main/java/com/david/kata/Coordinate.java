@@ -36,6 +36,12 @@ public class Coordinate {
         return position;
     }
 
+    /**
+     * Compute next position before position forward or backward
+     * @param area
+     * @param commandType
+     * @return
+     */
     public Position getNextPosition (Area area, CommandType commandType) {
         return (commandType == CommandType.F ? getNextPositionBeforeForward(area) : getNextPositionBeforeBackward(area));
     }

@@ -20,7 +20,12 @@ public class CollisionDetector {
             return false;
         }
         Position nextPosition = rover.getCoordinate().getNextPosition(rover.getArea(), rover.getCurrentCommand());
-        Optional<Obstacle> optionalObstacle = rover.getObstacles().stream().filter(o->o.getPosition().equals(nextPosition)).findFirst();
+        Optional<Obstacle> optionalObstacle = findObstacle(nextPosition);
+        nextPosition = null;
         return optionalObstacle.isPresent();
+    }
+
+    private Optional<Obstacle> findObstacle(Position nextPosition) {
+        return rover.getObstacles().stream().filter(o -> o.getPosition().equals(nextPosition)).findFirst();
     }
 }
